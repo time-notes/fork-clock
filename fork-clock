@@ -1,13 +1,16 @@
 import time
 
-def pomodoro():
+def pomodoro(focus_duration=1500, short_break_duration=300, long_break_duration=900):
     print("Let's start focusing!")
-    for i in range(4): #运行四次专注时间和短休息时间
-        time.sleep(2000) #专注时间为25分钟，即1500秒
+    for i in range(4):  # Run four cycles of focus time and short breaks
+        time.sleep(focus_duration)
         print("Time is up! Take a short break.")
-        time.sleep(200) #短休息时间为5分钟，即300秒
-    time.sleep(900) #长休息时间为15分钟，即900秒
+        time.sleep(short_break_duration)
+    time.sleep(long_break_duration)
     print("Congratulations! You have completed a pomodoro cycle. Take a long break.")
 
 if __name__ == '__main__':
-    pomodoro()
+    focus_time = int(input("Enter the duration for focus time in seconds (default is 1500 seconds): ") or 1500)
+    short_break_time = int(input("Enter the duration for short breaks in seconds (default is 300 seconds): ") or 300)
+    long_break_time = int(input("Enter the duration for long breaks in seconds (default is 900 seconds): ") or 900)
+    pomodoro(focus_time, short_break_time, long_break_time)
